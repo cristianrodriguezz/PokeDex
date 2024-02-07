@@ -13,15 +13,20 @@ Busca Pokémon por nombre, tipo o región para encontrar rápidamente la informa
 
 ## Installation
 
-Instalá con [NPM](https://www.npmjs.com/) o [Yarn](https://yarnpkg.com/en/).
+Cloná el repositorio
 
 ```bash
-yarn add react-flip-move
-
-# Or, if not using yarn:
-npm i -S react-flip-move
+git clone https://github.com/cristianrodriguezz/PokeDex.git
 ```
 
+Una vez en la carpeta ejecuta este comando:
+
+```bash
+npm install
+npm run dev
+```
+
+Listo con eso lo tenes andando en tu localhost
 
 ## Tecnologías Utilizadas
 
