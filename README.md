@@ -1,8 +1,49 @@
-# React + Vite
+## POKEDEX
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Explora esta  base de datos de Pokémon con información detallada sobre cada especie, incluyendo su tipo, habilidades, estadísticas y más.
+Busca Pokémon por nombre, tipo o región para encontrar rápidamente la información que necesitas.
 
-Currently, two official plugins are available:
+## Capturas de pantalla
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![image](https://socialred.s3.sa-east-1.amazonaws.com/Sin+t%C3%ADtulo.png)
+
+![image](https://socialred.s3.sa-east-1.amazonaws.com/asd.png)
+## Demo
+[POKEDEX](https://poke-dex-eight-eosin.vercel.app/)
+
+## Installation
+
+Instalá con [NPM](https://www.npmjs.com/) o [Yarn](https://yarnpkg.com/en/).
+
+```bash
+yarn add react-flip-move
+
+# Or, if not using yarn:
+npm i -S react-flip-move
+```
+
+
+## Tecnologías Utilizadas
+
+Este proyecto fue desarrollado utilizando las siguientes tecnologías:
+
+- React
+
+Y las siguientes librerías:
+
+- React Router Dom
+- React Flip Move
+- Zustand
+
+## Main objetives
+
+  - Crear un diseño web responsive con React, HTML y CSS
+  - Diseño atractivo e intuitivo
+  - Conectar a una API y manejar los estados de respuesta
+
+
+Si deseas contribuir al proyecto, hazmelo saber
+
+## Contacto
+
+Correo electrónico [cristiandosespigas@gmail.com](cristiandosespigas@gmail.com)
