@@ -22,6 +22,7 @@ git clone https://github.com/cristianrodriguezz/PokeDex.git
 Una vez en la carpeta ejecuta este comando:
 
 ```bash
+cd PokeDex
 npm install
 npm run dev
 ```
