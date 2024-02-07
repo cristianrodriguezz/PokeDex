@@ -27,7 +27,7 @@ npm install
 npm run dev
 ```
 
-Listo con eso lo tenes andando en tu localhost http://localhost:5174/
+Listo con eso lo tenes andando en tu localhost suele ser http://localhost:5174/
 
 ## Tecnologías Utilizadas
 
