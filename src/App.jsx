@@ -1,14 +1,17 @@
 import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
 
 function App() {
 
   return (
     <>
-      <p className="text-xl">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+      </Routes>
     </>
   )
+  
 }
 
 export default App
