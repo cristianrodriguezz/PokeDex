@@ -6,7 +6,7 @@ import FlipMove from 'react-flip-move';
 import Loading from './Loading';
 import { useNavigate } from "react-router-dom";
 import { flushSync } from 'react-dom';
-import { getTypePokemon } from '../utils/typesOfPokemon';
+import { getTypePokemonColor } from '../utils/typesOfPokemon';
 
 
 const ListPokeCard = () => {
@@ -42,7 +42,7 @@ const ListPokeCard = () => {
     
     <FlipMove typeName="ul" className='items-center justify-center mb-6' style={style}>
       {sortedPokemonData?.map(pokemon => (
-        <li style={{viewTransitionName:`pokemon-container-${pokemon.id}`}} onClick={() => handleClickDetail(pokemon.id)} key={pokemon.id} className={`relative flex flex-col justify-center ${getTypePokemon(pokemon.types[0].type.name)} h-full p-3 rounded-xl cursor-pointer`}>
+        <li style={{viewTransitionName:`pokemon-container-${pokemon.id}`}} onClick={() => handleClickDetail(pokemon.id)} key={pokemon.id} className={`relative flex flex-col justify-center ${getTypePokemonColor(pokemon.types[0].type.name)} h-full p-3 rounded-xl cursor-pointer`}>
           <div className="w-40 m-auto">
             <img style={{viewTransitionName:`pokemon-image-${pokemon.id}`}} className="size-full" src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
           </div>
