@@ -1,25 +1,33 @@
-import { useFetchPokemonsList } from '../hooks/useFetch';
-import PokemonCard from './PokemonCard';
+
+import { useFetchPokemonDetails, useFetchPokemonsUrl } from '../hooks/useFetch'
+import PokemonCard from './PokemonCard'
+
 
 const ListPokeCard = () => {
-  const { pokemons, loading, error } = useFetchPokemonsList();
+  const { pokemons, loading, error } = useFetchPokemonsUrl()
+  const { pokemonDetails } = useFetchPokemonDetails(pokemons)
+
+
+
+  console.log(pokemonDetails);
+
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Error: {error}</div>
   }
 
   return (
     <ul className='items-center justify-center' style={style}>
-      {pokemons.map(pokemon => (
-        <PokemonCard key={pokemon.url} pokemon={pokemon} />
+      {pokemonDetails.map(pokemon => (
+        <PokemonCard key={pokemon.id} pokemon={pokemon}/>
       ))}
     </ul>
-  );
-};
+  )
+}
 
 const style = {
   'listStyle': 'none',

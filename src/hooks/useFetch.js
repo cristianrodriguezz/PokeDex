@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getPokemons } from "../services/pokemons"
 
-export const useFetchPokemonsList   = () => {
+export const useFetchPokemonsUrl = () => {
   const URL = import.meta.env.VITE_BACKEND_URL
 
   const [pokemons, setPokemons] = useState([])
@@ -10,7 +10,7 @@ export const useFetchPokemonsList   = () => {
 
   const getData = async () => {
     try {
-      const data = await getPokemons(URL);
+      const data = await getPokemons(URL)
       setPokemons(data)
       setLoading(false)
     } catch (error) {
@@ -24,30 +24,38 @@ export const useFetchPokemonsList   = () => {
     getData()
   }, [])
 
+
   return { pokemons, loading, error }
 }
 
-export const useFetchPokemonDetails = (url) => {
-  const [details, setDetails] = useState(null)
+export const useFetchPokemonDetails = (pokemonUrls) => {
+
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  const [error, setError] = useState(null)
+  const [pokemonDetails, setPokemonDetails] = useState([])
+
 
   useEffect(() => {
-    async function fetchDetails() {
+    const fetchData = async () => {
+
       try {
-        const response = await fetch(url)
-        const data = await response.json()
-        setDetails(data)
+
+        // Realiza todas las llamadas a la API de manera concurrente
+        const responses = await Promise.all(pokemonUrls.map(url => fetch(url.url)))
+
+        const data = await Promise.all(responses.map(response => response.json()))
+
+        setPokemonDetails(data)
         setLoading(false)
       } catch (error) {
-        setError(error.message)
+        console.error('Error fetching Pokemon details:', error)
+        setError(error)
         setLoading(false)
       }
     }
 
-    fetchDetails()
-  }, [url])
+    fetchData()
+  }, [pokemonUrls])
 
-  return { details, loading, error }
+  return { pokemonDetails, loading, error }
 }
-
