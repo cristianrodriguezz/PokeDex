@@ -6,16 +6,11 @@ export default {
   ],
   theme: {
     extend: {
-      backgroundImage: theme => ({
-        'poke-gradient': 'linear-gradient(0deg, rgba(57, 37, 163, 1) 17.69%,rgba(120, 35, 187, 1) 82.96%)'
-      })
-    },
-    gradientColorStops: theme => ({
-      ...theme('colors'),
-      'poke-start': 'rgba(57, 37, 163, 1)',
-      'poke-end': 'rgba(120, 35, 187, 1)',
-    })
+      fontFamily: {
+        'honk': ['Honk', 'sans-serif'],
+        'noto': ['Noto Sans Mono', 'sans-serif'],
+      }
+    }
   },
   plugins: [],
 }
-
