@@ -1,28 +1,27 @@
 import { create } from "zustand";
+import { FILTER } from "../constants/filter";
 
 export const useStoreFilter = create((set) => ({
   filters: {
-    sortOrder: 'ascending', // Orden por defecto
+    sortOrder: FILTER.NONE, 
   },
   setFilters: (newFilters) => set({ filters: newFilters }),
 
   filterAndSortData: (data) => {
     const { sortOrder } = useStoreFilter.getState().filters;
 
-    // Ordenar los datos por altura
-    let sortedData = [...data];
-    sortedData.sort((a, b) => {
-      const heightA = a.height;
-      const heightB = b.height;
-
-      // Comparar los valores según el sortOrder
-      if (sortOrder === "ascending") {
-        return heightA - heightB; // Ascendente
-      } else {
-        return heightB - heightA; // Descendente
-      }
-    });
-
-    return sortedData;
+    // Verificar si sortOrder es 'ascending' o 'descending', de lo contrario, no se aplica ningún filtro
+    // En este caso estoy usando una constante en otro archivo para poder utilizarlo y se tiene que cambiar se cambia una sola vez
+    if (sortOrder === FILTER.ASC) {
+      // Ordenar los datos por altura en orden ascendente
+      //...data es la copia del array original
+      return [...data].sort((a, b) => a.height - b.height);
+    } else if (sortOrder === FILTER.DESC) {
+      // Ordenar los datos por altura en orden descendente
+      return [...data].sort((a, b) => b.height - a.height);
+    } else {
+      // No se aplica ningún filtro
+      return data;
+    }
   }
 }));

@@ -1,16 +1,18 @@
 
 import { useFetchPokemonDetails, useFetchPokemonsUrl } from '../hooks/useFetch'
+import { useStoreFilter } from '../hooks/useStore'
+import { convertLengthToMeters, convertWeightToKg, formatNumberFourDigits } from '../utils/format';
 import PokemonCard from './PokemonCard'
+import FlipMove from 'react-flip-move';
 
 
 const ListPokeCard = () => {
   const { pokemons, loading, error } = useFetchPokemonsUrl()
   const { pokemonDetails } = useFetchPokemonDetails(pokemons)
+  const { filterAndSortData } = useStoreFilter();
+  
 
-
-
-  console.log(pokemonDetails);
-
+  const sortedPokemonData = filterAndSortData(pokemonDetails);
 
   if (loading) {
     return <div>Loading...</div>
@@ -21,11 +23,20 @@ const ListPokeCard = () => {
   }
 
   return (
-    <ul className='items-center justify-center' style={style}>
-      {pokemonDetails.map(pokemon => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon}/>
+    
+    <FlipMove typeName="ul" className='items-center justify-center' style={style}>
+      {sortedPokemonData?.map(pokemon => (
+        <li key={pokemon.id} className="relative flex flex-col justify-center bg-slate-500 h-full p-3 rounded-xl">
+          <div className="w-40 m-auto">
+            <img className="size-full" src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
+          </div>
+          <p className="text-gray-400">N.° {formatNumberFourDigits(pokemon.id)}</p>
+          <h2 className="first-letter:uppercase text-2xl mb-2">{pokemon.name}</h2>
+          <p>Altura: {convertLengthToMeters(pokemon.height)} m</p>
+          <p>Peso: {convertWeightToKg(pokemon.weight)} kg</p>
+        </li>
       ))}
-    </ul>
+    </FlipMove>
   )
 }
 

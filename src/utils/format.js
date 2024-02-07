@@ -10,7 +10,7 @@ export const formatNumberFourDigits = (number) => {
 // Convierte la unidad a metros
 export const convertLengthToMeters = (lengthInCentimeters) => {
   const lengthInMeters = lengthInCentimeters / 100
-  return Math.round(lengthInMeters * 100) / 100 // Redondeo a dos decimales
+  return Math.round(lengthInMeters * 100) / 10 // Redondeo a dos decimales
 }
 
 // Convierte la unidad a kilogramos
