@@ -1,4 +1,14 @@
-body{
+progress {
+  appearance: none;
+  border: none; 
+}
 
+progress::-webkit-progress-bar {
+  background-color: #8336e9; 
+  border-radius: 10px; 
+}
 
+progress::-webkit-progress-value {
+  background-color: #05f591; 
+  border-radius: 10px; 
 }

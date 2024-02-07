@@ -10,6 +10,9 @@ export default {
         'honk': ['Honk', 'sans-serif'],
         'noto': ['Noto Sans Mono', 'sans-serif'],
       }
+    },
+    animation: {
+      wiggle: 'wiggle 1s ease-in-out infinite',
     }
   },
   plugins: [],

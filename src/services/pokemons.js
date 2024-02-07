@@ -4,3 +4,8 @@ export const getPokemons = async (url) => {
 
   return results
 }
+
+export const getPokemon = async (url) => {
+  const response = await fetch(url)
+  return await response.json()
+}

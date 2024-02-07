@@ -14,7 +14,23 @@ export const convertLengthToMeters = (lengthInCentimeters) => {
 }
 
 // Convierte la unidad a kilogramos
-export function convertWeightToKg(weightInHectograms) {
+export const convertWeightToKg =(weightInHectograms) =>  {
   const weightInKg = Math.round(weightInHectograms * 0.1 * 100) / 100 // Redondeo a dos decimales
   return weightInKg.toFixed(2).replace('.', ','); // Reemplaza el punto por coma
 }
+//Me trae los stats en español
+
+export const getStats = (stat) => {
+
+  const stats = {
+    'hp': 'Vida',
+    'attack': 'Ataque',
+    'defense': 'Defensa',
+    'special-attack': 'Ataque especial',
+    'special-defense': 'Defensa especial',
+    'speed': 'Velocidad'
+  }
+
+  return stats[stat]
+}
+

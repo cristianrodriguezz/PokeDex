@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getPokemons } from "../services/pokemons"
+import { getPokemon, getPokemons } from "../services/pokemons"
 
 export const useFetchPokemonsUrl = () => {
   const URL = import.meta.env.VITE_BACKEND_URL
@@ -10,7 +10,7 @@ export const useFetchPokemonsUrl = () => {
 
   const getData = async () => {
     try {
-      const data = await getPokemons(URL)
+      const data = await getPokemons(`${URL}?limit=10&offset=0`)
       setPokemons(data)
       setLoading(false)
     } catch (error) {
@@ -58,4 +58,32 @@ export const useFetchPokemonDetails = (pokemonUrls) => {
   }, [pokemonUrls])
 
   return { pokemonDetails, loading, error }
+}
+
+export const useFetchPokemonById = (id) => {
+
+  const URL = import.meta.env.VITE_BACKEND_URL
+
+  const [pokemon, setPokemon] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
+  const getData = async () => {
+    try {
+      const data = await getPokemon(`${URL}/${id}`)
+      setPokemon(data)
+      setLoading(false)
+    } catch (error) {
+      console.error('Error fetching:', error)
+      setError('Error fetching:', error)
+      setLoading(false)
+    }
+  };
+
+  useEffect(() => {
+    getData()
+  }, [id])
+
+
+  return { pokemon, loading, error }
 }
